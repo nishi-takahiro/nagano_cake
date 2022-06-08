@@ -6,11 +6,50 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class = "container">
+          <!-- ブランドロゴ -->
+          <a class ="navbar-brand p-3" ><%= link_to image_tag('no_image.jpg'),root_path %></a>
+          
+          
+          <% if customer_signed_in? %>
+            <ul class = "navbar-nav ml-auto">
+            <!-- カスタマーがログインしているとき -->
+             <li>
+               <%= link_to public_customers_show_path, class: 'nav-link text-light' do %>
+               <i class = "fas fa-home"></i>マイページ
+               <% end %>
+             </li>
+             <li>
+              
+             </li>
+            <% else %>
+            <!-- ログインしていないとき -->
+            <li>
+              <%= link_to about_path, class:'nav-link text-light' do %>
+              <i class = "fas fa-link "></i>About
+              <% end %>
+            </li>
+            <li>
+              <%= link_to items_path, class:'nav-link text-light' do %>
+              <i class = "fas fa-clipbard"></i>商品一覧
+              <% end %>
+            </li>
+          <% end %>  
+            
+          </ul>
+        </div>
+        
+      </nav>
+    </header>
+    <main></main>
+    <footer></footer>
     <%= yield %>
   </body>
 </html>

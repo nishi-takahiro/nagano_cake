@@ -40,5 +40,5 @@ class Public::SessionsController < Devise::SessionsController
     　else
     　  flash[:notice] = "項目を入力してください"
       end
-  
+  end
 end
